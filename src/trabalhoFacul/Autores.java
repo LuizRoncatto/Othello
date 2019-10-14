@@ -7,7 +7,7 @@ public class Autores {
 	}
 
 	public void imprimirNomes() {
-		System.out.println("Luiz Fernando de Oliveira ROncatto  R A: 142779412002  Eng. Computação"); 
+		System.out.println("Luiz Fernando de Oliveira ROncatto  RA: 142779412002  Eng. Computação"); 
 	}
 
 }
