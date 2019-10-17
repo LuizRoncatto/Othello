@@ -4,6 +4,17 @@ public class Tabuleiro {
 
 	private int Tam_Tabuleiro = 8;
 	private Peca tabuleiro[][];
+	
+	public void jogada (int linha, int coluna, boolean jogador) {
+		if (jogador == true) {
+			
+		tabuleiro[linha][coluna] = new PecaO();
+		}
+		else{
+			tabuleiro[linha][coluna] = new PecaX();
+		
+		}
+	}
 
 	public Tabuleiro() {
 		tabuleiro = new Peca[Tam_Tabuleiro][Tam_Tabuleiro];

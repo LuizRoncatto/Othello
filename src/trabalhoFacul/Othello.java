@@ -21,7 +21,7 @@ public class Othello {
 		do {
 			System.out.printf("\n");
 			System.out.println("Escolha uma opção de Jogo abaixo");
-			System.out.println("1. Jogador x Jogado");
+			System.out.println("1. Jogador x Jogador");
 			System.out.println("2. Jogador x IA");
 			System.out.println("3. Autores");
 			System.out.println("4. Como Jogar");
@@ -32,6 +32,8 @@ public class Othello {
 			
 			switch (opcao) {
 			case 1:
+				Jogo jogo = new Jogo();
+				jogo.initJogo();
 
 				break;
 			case 2:
