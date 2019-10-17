@@ -1,6 +1,7 @@
 package trabalhoFacul;
 
 import java.util.Scanner;
+
 /** 
  * CLasse Othello
  * 
