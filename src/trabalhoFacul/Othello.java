@@ -23,7 +23,7 @@ public class Othello {
 
 		do {
 			System.out.printf("\n");
-			System.out.println("Escolha uma opção de Jogo abaixo");
+			System.out.println("Escolha uma opcao de Jogo abaixo");
 			System.out.println("1. Jogador x Jogador");
 			System.out.println("2. Jogador x IA");
 			System.out.println("3. Autores");
@@ -62,7 +62,7 @@ public class Othello {
 				break;
 			}
 
-		} while (opcao != 6 && opcao > 0);
+		} while (opcao < 6 && opcao > 0);
 
 		entrada.close();
 	}
