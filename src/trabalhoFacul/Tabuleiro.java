@@ -23,16 +23,15 @@ public class Tabuleiro {
 			for (int j = 0; j < Tam_Tabuleiro; j++) {
 
 				tabuleiro[i][j] = new PecaVazia();
-				
-				
+
 			}
-			
+
 		}
-		
+
 		tabuleiro[3][3] = new PecaX();
 		tabuleiro[3][4] = new PecaO();
 		tabuleiro[4][3] = new PecaO();
-		tabuleiro[4][4] = new PecaX() ;
+		tabuleiro[4][4] = new PecaX();
 
 	}
 
@@ -44,6 +43,16 @@ public class Tabuleiro {
 
 			}
 			System.out.printf("\n");
+		}
+	}
+
+	public void jogada(int linha, int coluna, boolean jogador) {
+		if (jogador == true) {
+
+			tabuleiro[linha][coluna] = new PecaO();
+		} else {
+			tabuleiro[linha][coluna] = new PecaX();
+
 		}
 	}
 
