@@ -10,6 +10,7 @@ public class Jogo {
 
 	}
 
+
 	public void initJogo() {
 
 		Tabuleiro tabuleiro = new Tabuleiro();
