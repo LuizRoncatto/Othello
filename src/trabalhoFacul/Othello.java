@@ -1,11 +1,14 @@
 package trabalhoFacul;
 
 import java.util.Scanner;
-/** 
+
+/**
  * CLasse Othello
  * 
- * Representa o menu inicial do jogo onde o jogador encontra opções como jogar contra um outro jogador, jogar contra a entidade do programa, visualiar os autores do jogo,
- * aprender a jogar lendo as regras, ver replays de uma partida anterior e sair do jogo.  
+ * Representa o menu inicial do jogo onde o jogador encontra opções como jogar
+ * contra um outro jogador, jogar contra a entidade do programa, visualiar os
+ * autores do jogo, aprender a jogar lendo as regras, ver replays de uma partida
+ * anterior e sair do jogo.
  * 
  * @author root
  *
@@ -29,7 +32,7 @@ public class Othello {
 			System.out.println("6. Sair");
 
 			opcao = entrada.nextInt();
-			
+
 			switch (opcao) {
 			case 1:
 				Jogo jogo = new Jogo();
