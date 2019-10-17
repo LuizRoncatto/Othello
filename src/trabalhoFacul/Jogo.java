@@ -17,22 +17,20 @@ public class Jogo {
 
 		Scanner entrada = new Scanner(System.in);
 
-		do{
+		do {
 			System.out.println("faça sua jogada");
-		
-		System.out.println("Digite a linha");
-		int linha = entrada.nextInt();
-		System.out.println("Digite a coluna");
-		int coluna = entrada.nextInt();
 
-		tabuleiro.jogada(linha, coluna, jogador);
+			System.out.println("Digite a linha");
+			int linha = entrada.nextInt();
+			System.out.println("Digite a coluna");
+			int coluna = entrada.nextInt();
 
-		tabuleiro.imprimir();
+			tabuleiro.jogada(linha, coluna, jogador);
 
-		jogador = !jogador;
-		}while(true);
-		
-		
+			tabuleiro.imprimir();
+
+			jogador = !jogador;
+		} while (true);
 
 	}
 
