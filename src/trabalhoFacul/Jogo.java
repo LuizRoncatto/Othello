@@ -29,11 +29,11 @@ public class Jogo {
 
 			} else {
 				tabuleiro.jogada(linha, coluna, jogador);
+				jogador = !jogador;
 				// fimDeJogo ++;
 			}
 			tabuleiro.imprimir();
 
-			jogador = !jogador;
 		} while (true);
 
 	}
