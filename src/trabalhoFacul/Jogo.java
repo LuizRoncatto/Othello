@@ -10,7 +10,6 @@ public class Jogo {
 
 	}
 
-
 	public void initJogo() {
 
 		Tabuleiro tabuleiro = new Tabuleiro();
@@ -26,8 +25,12 @@ public class Jogo {
 			System.out.println("Digite a coluna");
 			int coluna = entrada.nextInt();
 
-			tabuleiro.jogada(linha, coluna, jogador);
+			if (tabuleiro.verificaEspaco(linha, coluna) == true) {
 
+			} else {
+				tabuleiro.jogada(linha, coluna, jogador);
+				// fimDeJogo ++;
+			}
 			tabuleiro.imprimir();
 
 			jogador = !jogador;

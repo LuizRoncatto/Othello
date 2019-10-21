@@ -1,8 +1,8 @@
 package trabalhoFacul;
 
 public class PecaX extends Peca {
-	
-	public PecaX(){
+
+	public PecaX() {
 		super(Peca.PecaX);
 	}
 }

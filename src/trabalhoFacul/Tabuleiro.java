@@ -4,7 +4,6 @@ public class Tabuleiro {
 
 	private int Tam_Tabuleiro = 8;
 	private Peca tabuleiro[][];
-	
 
 	public Tabuleiro() {
 		tabuleiro = new Peca[Tam_Tabuleiro][Tam_Tabuleiro];
@@ -44,6 +43,16 @@ public class Tabuleiro {
 			tabuleiro[linha][coluna] = new PecaX();
 
 		}
+	}
+
+	public boolean verificaEspaco(int linha, int coluna) {
+
+		if (!tabuleiro[linha][coluna].getCaracter().equals(Peca.PecaVazia)) {
+			System.out.println("Já tem peça");
+			return true;
+		} else
+			return false;
+
 	}
 
 }
