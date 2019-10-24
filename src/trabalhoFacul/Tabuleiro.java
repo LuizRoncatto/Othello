@@ -64,21 +64,20 @@ public class Tabuleiro {
 		if (jogador == true) {
 			int mudei = 0;
 			boolean acheiPeca = false;
-			for (int i = linha+1 ; i < Tam_Tabuleiro; i++) {
+			for (int i = linha + 1; i < Tam_Tabuleiro; i++) {
 				if (tabuleiro[i][coluna].getCaracter().equals(Peca.PecaO)) {
 					acheiPeca = true;
 				} else {
 					mudei++;
 				}
 				
-				if(acheiPeca==true && mudei > 0) {
-					for(int line = linha+1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO);line++)
-					tabuleiro[line][coluna] = new PecaO();
+				// Transforma as peças da vertical verificando de cima para baixo
+				if (acheiPeca == true && mudei > 0) {
+					for (int line = linha + 1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO); line++)
+						tabuleiro[line][coluna] = new PecaO();
 				}
 
 			}
-			
-			
 
 		}
 
