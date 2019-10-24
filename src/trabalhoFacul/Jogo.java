@@ -21,14 +21,15 @@ public class Jogo {
 			System.out.println("faça sua jogada");
 
 			System.out.println("Digite a linha");
-			int linha = entrada.nextInt();
+			int linha = entrada.nextInt()-1;
 			System.out.println("Digite a coluna");
-			int coluna = entrada.nextInt();
+			int coluna = entrada.nextInt()-1;
 
 			if (tabuleiro.verificaEspaco(linha, coluna) == true) {
 
 			} else {
 				tabuleiro.jogada(linha, coluna, jogador);
+				tabuleiro.convertePecaVertical(linha, coluna, jogador);
 				jogador = !jogador;
 				// fimDeJogo ++;
 			}
