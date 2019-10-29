@@ -10,7 +10,6 @@ public class Jogo {
 
 	}
 
-
 	public void initJogo() {
 
 		Tabuleiro tabuleiro = new Tabuleiro();
@@ -19,20 +18,24 @@ public class Jogo {
 		Scanner entrada = new Scanner(System.in);
 
 		do {
-			System.out.println("faÃ§a sua jogada");
+			System.out.println("faça sua jogada");
 
 			System.out.println("Digite a linha");
 			int linha = entrada.nextInt();
 			System.out.println("Digite a coluna");
 			int coluna = entrada.nextInt();
 
-			tabuleiro.jogada(linha, coluna, jogador);
+			if (tabuleiro.verificaEspaco(linha, coluna) == true) {
 
+			} else {
+				tabuleiro.jogada(linha, coluna, jogador);
+				jogador = !jogador;
+				// fimDeJogo ++;
+			}
 			tabuleiro.imprimir();
-
-			jogador = !jogador;
-		} while (true);
-
+			tabuleiro.contaJogada();
+		} while (tabuleiro.contador < 2);
+		entrada.close();
 	}
 
 }

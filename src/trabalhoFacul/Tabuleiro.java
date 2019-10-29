@@ -4,7 +4,7 @@ public class Tabuleiro {
 
 	private int Tam_Tabuleiro = 8;
 	private Peca tabuleiro[][];
-	
+	public int contador = 0;
 
 	public Tabuleiro() {
 		tabuleiro = new Peca[Tam_Tabuleiro][Tam_Tabuleiro];
@@ -43,6 +43,26 @@ public class Tabuleiro {
 		} else {
 			tabuleiro[linha][coluna] = new PecaX();
 
+		}
+	}
+
+	public boolean verificaEspaco(int linha, int coluna) {
+
+		if (!tabuleiro[linha][coluna].getCaracter().equals(Peca.PecaVazia)) {
+			System.out.println("Já tem peça");
+			return true;
+		} else
+			contador++;
+		return false;
+
+	}
+
+	public boolean contaJogada() {
+		if (contador < 2) {
+			return true;
+		} else {
+			System.out.println("Jogadas realizadas: " + contador);
+			return false;
 		}
 	}
 
