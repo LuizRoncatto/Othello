@@ -4,6 +4,8 @@ public class Tabuleiro {
 
 	private int Tam_Tabuleiro = 8;
 	private Peca tabuleiro[][];
+	public int contador = 0;
+
 
 	public Tabuleiro() {
 
@@ -53,13 +55,22 @@ public class Tabuleiro {
 	public boolean verificaEspaco(int linha, int coluna) {
 
 		if (!tabuleiro[linha][coluna].getCaracter().equals(Peca.PecaVazia)) {
-			System.out.println("JÃ¡ tem peÃ§a");
+			System.out.println("Já tem peça");
 			return true;
 		} else
-			return false;
+			contador++;
+		return false;
 
 	}
 
+	public boolean contaJogada() {
+		if (contador < 2) {
+			return true;
+		} else {
+			System.out.println("Jogadas realizadas: " + contador);
+			return false;
+		}
+	}
 	public void convertePecaVertical(int linha, int coluna, boolean jogador) {
 		if (jogador == true) {
 			int mudei = 0;
@@ -84,3 +95,4 @@ public class Tabuleiro {
 	}
 
 }
+

@@ -18,7 +18,7 @@ public class Jogo {
 		Scanner entrada = new Scanner(System.in);
 
 		do {
-			System.out.println("faÃ§a sua jogada");
+			System.out.println("faça sua jogada");
 
 			System.out.println("Digite a linha");
 			int linha = entrada.nextInt()-1;
@@ -29,13 +29,17 @@ public class Jogo {
 
 			} else {
 				tabuleiro.jogada(linha, coluna, jogador);
+
 				tabuleiro.convertePecaVertical(linha, coluna, jogador);
+
 				jogador = !jogador;
 				// fimDeJogo ++;
 			}
 			tabuleiro.imprimir();
 
-		} while (true);
+			tabuleiro.contaJogada();
+		} while (tabuleiro.contador < 60);
+		//entrada.close();
 
 	}
 
