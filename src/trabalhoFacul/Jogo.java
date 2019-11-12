@@ -1,5 +1,9 @@
 package trabalhoFacul;
-
+/**Classe Jogo
+ * Esta classe diz respeito a inicializacao do jogo
+ * ela faz as chamadas dos metodos que sao feitos
+ * por outras classes
+ */
 import java.util.Scanner;
 
 public class Jogo {
@@ -21,9 +25,9 @@ public class Jogo {
 			System.out.println("faca sua jogada");
 
 			System.out.println("Digite a linha");
-			int linha = entrada.nextInt()-1;
+			int linha = entrada.nextInt() - 1;
 			System.out.println("Digite a coluna");
-			int coluna = entrada.nextInt()-1;
+			int coluna = entrada.nextInt() - 1;
 
 			if (tabuleiro.verificaEspaco(linha, coluna) == true) {
 
@@ -38,10 +42,10 @@ public class Jogo {
 			tabuleiro.imprimir();
 
 			tabuleiro.contaJogada();
-			tabuleiro.verificaGanhador();
-		} while (tabuleiro.contador < 64);
-		
-		entrada.close();
+
+		   } while (tabuleiro.contador < 60);
+		  tabuleiro.verificaGanhador();
+		  entrada.close();
 
 	}
 

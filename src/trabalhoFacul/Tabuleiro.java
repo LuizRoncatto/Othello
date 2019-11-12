@@ -61,7 +61,13 @@ public class Tabuleiro {
 		return false;
 
 	}
-
+	
+	/**Metodo contaJogada
+	 * 
+	 * Esse metodo é utilizado para fazer as contagens de jogadas validas feito pelos jogadores
+	 * o contador so aumenta quando a jogada realizada for valida, retornando true ou false
+	 * @author lpadilha
+	 */
 	public boolean contaJogada() {
 		if (contador < 60) {
 			return true;
@@ -70,25 +76,35 @@ public class Tabuleiro {
 			return false;
 		}
 	}
-
+	
+	/**Metodo verificaGanhador
+	 * 
+	 * Este metodo faz a verificacao de quem foi o vencedor no final da partida
+	 * Quando o tabulheiro for completamente preenchido este metodo e chamado
+	 * para ver quem e o ganhar e imprimir na tela.
+	 * @author lpadilha
+	 *@category Method
+	 */
 	public void verificaGanhador() {
-		int ganha = 0;
+		int ganhador = 0;
+		//criação de dois lacos for para percorrer o tabuleiro e pegar a peca.
 		for (int i = 0; i < Tam_Tabuleiro; i++) {
 			
 			for (int j = 0; j < Tam_Tabuleiro; j++) {
-
+				//se a peca encontrada for igual a peca que eu tenho, somo na variavel ganhador
 				if (tabuleiro[i][j].getCaracter().equals(Peca.PecaX)) {
-					ganha++;
+					ganhador++;
+				//se for diferente eu decremento de ganhador.
 				}else {
-					ganha--;
+					ganhador--;
 				}
 					
 			}
 
-		}
-		if (ganha >0) {
+		}//ifs para verificar se a variavel está positiva, negativa ou neutra (0) para saber quem e o ganhador
+		if (ganhador >0) {
 			System.out.println("Parabéns, X ganhou!");
-		}else if (ganha<0) {
+		}else if (ganhador<0) {
 			System.out.println("Parabéns, O ganhou!");
 		}else {
 			System.out.println("Empate!");
@@ -124,7 +140,7 @@ public class Tabuleiro {
 					mudei++;
 				}
 
-				// Transforma as peÃ§as da vertical verificando de baixo para cima
+				// Transforma as pecas da vertical verificando de baixo para cima
 				if (acheiPeca == true && mudei > 0) {
 					for (int line = linha - 1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO); line--)
 						tabuleiro[line][coluna] = new PecaO();
@@ -153,7 +169,7 @@ public class Tabuleiro {
 				mudei++;
 			}
 
-			// Transforma as peÃ§as da horizontal verificando da direita para esquerda
+			// Transforma as pecas da horizontal verificando da direita para esquerda
 			if (acheiPeca == true && mudei > 0) {
 				for (j = coluna; j < Tam_Tabuleiro; j++) {
 					for (int colun = coluna + 1; !tabuleiro[linha][colun].equals(peca); colun++)

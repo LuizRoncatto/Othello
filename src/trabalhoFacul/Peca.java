@@ -1,5 +1,11 @@
 package trabalhoFacul;
-
+/**Classe Peca
+ * 
+ * Esta classe diz respeito a implementacao das pecas do jogo
+ * ela tambem e uma classe pai que abstrai para tres classes filhas
+ * @author lpadilha
+ *@category Class
+ */
 public class Peca {
 
 	protected static String PecaX = "X";
