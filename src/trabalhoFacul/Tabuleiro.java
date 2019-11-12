@@ -1,5 +1,7 @@
 package trabalhoFacul;
 
+import java.util.InputMismatchException;
+
 public class Tabuleiro {
 
 	private int Tam_Tabuleiro = 8;
@@ -52,14 +54,20 @@ public class Tabuleiro {
 	}
 
 	public boolean verificaEspaco(int linha, int coluna) {
+		try {
+			if (!tabuleiro[linha][coluna].getCaracter().equals(Peca.PecaVazia)) {
+				System.out.println("Ja tem peca");
+				return true;
+			} else {
+				contador++;
+				return false;
+			}
 
-		if (!tabuleiro[linha][coluna].getCaracter().equals(Peca.PecaVazia)) {
-			System.out.println("J� tem pe�a");
+		} catch (ArrayIndexOutOfBoundsException ae) {
+
+			System.out.println("JOGADA INVALIDA");
 			return true;
-		} else
-			contador++;
-		return false;
-
+		} 
 	}
 
 	public boolean contaJogada() {
@@ -72,89 +80,176 @@ public class Tabuleiro {
 	}
 
 	public void convertePecaVertical(int linha, int coluna, boolean jogador) {
+		Peca peca;
+
 		if (jogador == true) {
-			int mudei = 0;
-			boolean acheiPeca = false;
-			for (int i = linha + 1; i < Tam_Tabuleiro; i++) {
-				if (tabuleiro[i][coluna].getCaracter().equals(Peca.PecaO)) {
-					acheiPeca = true;
-				} else {
-					mudei++;
-				}
+			peca = new PecaO();
+		} else {
+			peca = new PecaX();
+		}
 
-				// Transforma as peças da vertical verificando de cima para baixo
-				if (acheiPeca == true && mudei > 0) {
-					for (int line = linha + 1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO); line++)
-						tabuleiro[line][coluna] = new PecaO();
-				}
-
+		int mudei = 0;
+		boolean acheiPeca = false;
+		for (int i = linha + 1; i < Tam_Tabuleiro; i++) {
+			if (tabuleiro[i][coluna].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
 			}
 
-			mudei = 0;
-			acheiPeca = false;
-
-			for (int i = linha - 1; i >= 0; i--) {
-				if (tabuleiro[i][coluna].getCaracter().equals(Peca.PecaO)) {
-					acheiPeca = true;
-				} else {
-					mudei++;
-				}
-
-				// Transforma as peças da vertical verificando de baixo para cima
-				if (acheiPeca == true && mudei > 0) {
-					for (int line = linha - 1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO); line--)
-						tabuleiro[line][coluna] = new PecaO();
-				}
+			// Transforma as peças da vertical verificando de cima para baixo
+			if (acheiPeca == true && mudei > 0) {
+				for (int line = linha + 1; !tabuleiro[line][coluna].equals(peca); line++)
+					tabuleiro[line][coluna] = peca;
 			}
 
+		}
+
+		mudei = 0;
+		acheiPeca = false;
+
+		for (int i = linha - 1; i >= 0; i--) {
+			if (tabuleiro[i][coluna].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
+			}
+
+			// Transforma as peças da vertical verificando de baixo para cima
+			if (acheiPeca == true && mudei > 0) {
+				for (int line = linha - 1; !tabuleiro[line][coluna].equals(peca); line--)
+					tabuleiro[line][coluna] = peca;
+			}
 		}
 
 	}
 
 	public void convertePecaHorizontal(int linha, int coluna, boolean jogador) {
-		
+
 		Peca peca;
-		if (jogador == true )
+		if (jogador == true)
 			peca = new PecaO();
 		else {
 			peca = new PecaX();
 		}
-		
-			int mudei = 0;
-			boolean acheiPeca = false;
-			for (int j = coluna + 1; j < Tam_Tabuleiro; j++) {
-				if (tabuleiro[linha][j].equals(peca)) {
-					acheiPeca = true;
-				} else {
-					mudei++;
-				}
 
-				// Transforma as peças da horizontal verificando da direita para esquerda
-				if (acheiPeca == true && mudei > 0) {
-					for (j = coluna; j < Tam_Tabuleiro; j++) {
-						for (int colun = coluna + 1; !tabuleiro[linha][colun].equals(peca); colun++)
-							tabuleiro[linha][colun] = peca;
-
-					}
-				}
+		int mudei = 0;
+		boolean acheiPeca = false;
+		for (int j = coluna + 1; j < Tam_Tabuleiro; j++) {
+			if (tabuleiro[linha][j].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
 			}
-			mudei = 0;
-			acheiPeca = false;
 
-			for (int j = coluna - 1; j >= 0; j--) {
-				if (tabuleiro[linha][j].equals(peca)) {
-					acheiPeca = true;
-				} else {
-					mudei++;
-				}
-
-				// Transforma as peças da vertical verificando de baixo para cima
-				if (acheiPeca == true && mudei > 0) {
-					for (int colun = coluna - 1; !tabuleiro[linha][colun].equals(peca); colun--)
+			// Transforma as peças da horizontal verificando da direita para esquerda
+			if (acheiPeca == true && mudei > 0) {
+				for (j = coluna; j < Tam_Tabuleiro; j++) {
+					for (int colun = coluna + 1; !tabuleiro[linha][colun].equals(peca); colun++)
 						tabuleiro[linha][colun] = peca;
+
 				}
 			}
+		}
+		mudei = 0;
+		acheiPeca = false;
 
-		
+		for (int j = coluna - 1; j >= 0; j--) {
+			if (tabuleiro[linha][j].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
+			}
+
+			// Transforma as peças da vertical verificando de baixo para cima
+			if (acheiPeca == true && mudei > 0) {
+				for (int colun = coluna - 1; !tabuleiro[linha][colun].equals(peca); colun--)
+					tabuleiro[linha][colun] = peca;
+			}
+		}
+
+	}
+
+	public void converteDiagonal(int linha, int coluna, boolean jogador) {
+		Peca peca;
+
+		if (jogador == true) {
+			peca = new PecaO();
+		} else {
+			peca = new PecaX();
+		}
+
+		int mudei = 0;
+		boolean acheiPeca = false;
+
+		for (int i = linha + 1, j = coluna + 1; i < Tam_Tabuleiro && j < Tam_Tabuleiro; i++, j++) {
+
+			if (tabuleiro[i][j].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
+			}
+
+			if (acheiPeca == true && mudei > 0) {
+				for (int line = linha + 1, colun = coluna + 1; !tabuleiro[line][colun].equals(peca); colun++, line++)
+					tabuleiro[line][colun] = peca;
+			}
+
+		}
+
+		mudei = 0;
+		acheiPeca = false;
+
+		for (int i = linha - 1, j = coluna + 1; i >= 0 && j < Tam_Tabuleiro; i--, j++) {
+
+			if (tabuleiro[i][j].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
+			}
+
+			if (acheiPeca == true && mudei > 0) {
+				for (int line = linha - 1, colun = coluna + 1; !tabuleiro[line][colun].equals(peca); colun++, line--)
+					tabuleiro[line][colun] = peca;
+			}
+
+		}
+
+		mudei = 0;
+		acheiPeca = false;
+
+		for (int i = linha + 1, j = coluna - 1; i < Tam_Tabuleiro && j >= 0; i++, j--) {
+
+			if (tabuleiro[i][j].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
+			}
+
+			if (acheiPeca == true && mudei > 0) {
+				for (int line = linha + 1, colun = coluna - 1; !tabuleiro[line][colun].equals(peca); colun--, line++)
+					tabuleiro[line][colun] = peca;
+			}
+
+		}
+
+		mudei = 0;
+		acheiPeca = false;
+
+		for (int i = linha - 1, j = coluna - 1; i >= 0 && j >= 0; i--, j--) {
+
+			if (tabuleiro[i][j].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
+			}
+
+			if (acheiPeca == true && mudei > 0) {
+				for (int line = linha - 1, colun = coluna - 1; !tabuleiro[line][colun].equals(peca); colun--, line--)
+					tabuleiro[line][colun] = peca;
+			}
+
+		}
+
 	}
 }
