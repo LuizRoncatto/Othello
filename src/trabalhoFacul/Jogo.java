@@ -1,7 +1,5 @@
 package trabalhoFacul;
 
-
-
 /**Classe Jogo
  * Esta classe diz respeito a inicializacao do jogo
  * ela faz as chamadas dos metodos que sao feitos
@@ -29,6 +27,7 @@ public class Jogo {
 			System.out.println("faca sua jogada");
 
 			System.out.println("Digite a linha");
+
 
 
 			int linha = entrada.nextInt() - 1;

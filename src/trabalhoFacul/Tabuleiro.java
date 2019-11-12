@@ -75,8 +75,6 @@ public class Tabuleiro {
 	 * Esse metodo e utilizado para fazer as contagens de jogadas validas feito
 	 * pelos jogadores o contador so aumenta quando a jogada realizada for valida,
 	 * retornando true ou false
-	 * 
-	 * @author lpadilha
 	 */
 	public boolean contaJogada() {
 		if (contador < 60) {
@@ -99,7 +97,7 @@ public class Tabuleiro {
 	 */
 	public void verificaGanhador() {
 		int ganhador = 0;
-		// cria��o de dois lacos for para percorrer o tabuleiro e pegar a peca.
+		// criacao de dois lacos for para percorrer o tabuleiro e pegar a peca.
 		for (int i = 0; i < Tam_Tabuleiro; i++) {
 
 			for (int j = 0; j < Tam_Tabuleiro; j++) {
@@ -111,16 +109,15 @@ public class Tabuleiro {
 					ganhador--;
 				}
 
+			} // ifs para verificar se a variavel esta positiva, negativa ou neutra (0) para
+				// saber quem e o ganhador
+			if (ganhador > 0) {
+				System.out.println("Parab�ns, X ganhou!");
+			} else if (ganhador < 0) {
+				System.out.println("Parab�ns, O ganhou!");
+			} else {
+				System.out.println("Empate!");
 			}
-
-		} // ifs para verificar se a variavel esta positiva, negativa ou neutra (0) para
-			// saber quem e o ganhador
-		if (ganhador > 0) {
-			System.out.println("Parab�ns, X ganhou!");
-		} else if (ganhador < 0) {
-			System.out.println("Parab�ns, O ganhou!");
-		} else {
-			System.out.println("Empate!");
 		}
 	}
 
@@ -159,6 +156,11 @@ public class Tabuleiro {
 			} else {
 				mudei++;
 
+				// Transforma as pecas da vertical verificando de baixo para cima
+				if (acheiPeca == true && mudei > 0) {
+					for (int line = linha - 1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO); line--)
+						tabuleiro[line][coluna] = new PecaO();
+				}
 			}
 
 			// Transforma as peças da vertical verificando de baixo para cima
@@ -257,10 +259,11 @@ public class Tabuleiro {
 			if (acheiPeca == true && mudei > 0) {
 				for (int line = linha - 1, colun = coluna + 1; !tabuleiro[line][colun].equals(peca); colun++, line--)
 					tabuleiro[line][colun] = peca;
+
+				mudei = 0;
+				acheiPeca = false;
 			}
-
 		}
-
 		mudei = 0;
 		acheiPeca = false;
 
@@ -312,6 +315,5 @@ public class Tabuleiro {
 			}
 
 		}
-
 	}
 }
