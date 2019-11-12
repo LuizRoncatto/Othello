@@ -64,18 +64,63 @@ public class Tabuleiro {
 			}
 
 		} catch (ArrayIndexOutOfBoundsException ae) {
-
 			System.out.println("JOGADA INVALIDA");
 			return true;
-		} 
+		}
 	}
 
+	/**
+	 * Metodo contaJogada
+	 * 
+	 * Esse metodo e utilizado para fazer as contagens de jogadas validas feito
+	 * pelos jogadores o contador so aumenta quando a jogada realizada for valida,
+	 * retornando true ou false
+	 * 
+	 * @author lpadilha
+	 */
 	public boolean contaJogada() {
-		if (contador < 2) {
+		if (contador < 60) {
 			return true;
 		} else {
 			System.out.println("Jogadas realizadas: " + contador);
 			return false;
+		}
+	}
+
+	/**
+	 * Metodo verificaGanhador
+	 * 
+	 * Este metodo faz a verificacao de quem foi o vencedor no final da partida
+	 * Quando o tabulheiro for completamente preenchido este metodo e chamado para
+	 * ver quem e o ganhar e imprimir na tela.
+	 * 
+	 * @author lpadilha
+	 * @category Method
+	 */
+	public void verificaGanhador() {
+		int ganhador = 0;
+		// cria��o de dois lacos for para percorrer o tabuleiro e pegar a peca.
+		for (int i = 0; i < Tam_Tabuleiro; i++) {
+
+			for (int j = 0; j < Tam_Tabuleiro; j++) {
+				// se a peca encontrada for igual a peca que eu tenho, somo na variavel ganhador
+				if (tabuleiro[i][j].getCaracter().equals(Peca.PecaX)) {
+					ganhador++;
+					// se for diferente eu decremento de ganhador.
+				} else {
+					ganhador--;
+				}
+
+			}
+
+		} // ifs para verificar se a variavel esta positiva, negativa ou neutra (0) para
+			// saber quem e o ganhador
+		if (ganhador > 0) {
+			System.out.println("Parab�ns, X ganhou!");
+		} else if (ganhador < 0) {
+			System.out.println("Parab�ns, O ganhou!");
+		} else {
+			System.out.println("Empate!");
 		}
 	}
 
@@ -113,6 +158,7 @@ public class Tabuleiro {
 				acheiPeca = true;
 			} else {
 				mudei++;
+
 			}
 
 			// Transforma as peças da vertical verificando de baixo para cima
@@ -224,13 +270,29 @@ public class Tabuleiro {
 				acheiPeca = true;
 			} else {
 				mudei++;
+
+			}
+		}
+		mudei = 0;
+		acheiPeca = false;
+
+		for (int j = coluna - 1; j >= 0; j--) {
+			if (tabuleiro[linha][j].equals(peca)) {
+				acheiPeca = true;
+			} else {
+				mudei++;
 			}
 
+			// Transforma as pe�as da vertical verificando de baixo para cima
 			if (acheiPeca == true && mudei > 0) {
-				for (int line = linha + 1, colun = coluna - 1; !tabuleiro[line][colun].equals(peca); colun--, line++)
-					tabuleiro[line][colun] = peca;
+				for (int colun = coluna - 1; !tabuleiro[linha][colun].equals(peca); colun--)
+					tabuleiro[linha][colun] = peca;
 			}
+		}
 
+		if (acheiPeca == true && mudei > 0) {
+			for (int line = linha + 1, colun = coluna - 1; !tabuleiro[line][colun].equals(peca); colun--, line++)
+				tabuleiro[line][colun] = peca;
 		}
 
 		mudei = 0;

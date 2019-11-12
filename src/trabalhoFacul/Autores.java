@@ -8,7 +8,7 @@ public class Autores {
 
 	public void imprimirNomes() {
 		System.out.println("Luiz Fernando de Oliveira Roncatto  RA: 142779412002  Eng. Computacao"); 
-		System.out.println("Leonardo Padilha Ramos de Souza  RA:   Eng. Computacao");
+		System.out.println("Leonardo Padilha Ramos de Souza     RA: 142806412002  Eng. Computacao");
 	}
 
 }

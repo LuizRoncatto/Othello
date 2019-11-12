@@ -1,6 +1,13 @@
 package trabalhoFacul;
 
-import java.util.InputMismatchException;
+
+
+/**Classe Jogo
+ * Esta classe diz respeito a inicializacao do jogo
+ * ela faz as chamadas dos metodos que sao feitos
+ * por outras classes
+ */
+
 import java.util.Scanner;
 
 public class Jogo {
@@ -23,6 +30,7 @@ public class Jogo {
 
 			System.out.println("Digite a linha");
 
+
 			int linha = entrada.nextInt() - 1;
 
 			System.out.println("Digite a coluna");
@@ -35,15 +43,15 @@ public class Jogo {
 				tabuleiro.convertePecaHorizontal(linha, coluna, jogador);
 				tabuleiro.converteDiagonal(linha, coluna, jogador);
 				jogador = !jogador;
-				// fimDeJogo ++;
 			}
 
 			tabuleiro.imprimir();
 
 			tabuleiro.contaJogada();
 
-		} while (tabuleiro.contador < 60);
-		// entrada.close();
+		   } while (tabuleiro.contador < 60);
+		  tabuleiro.verificaGanhador();
+		  entrada.close();
 
 	}
 
