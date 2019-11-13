@@ -20,7 +20,7 @@ public class Othello {
 		Scanner entrada = new Scanner(System.in);
 
 		int opcao;
-
+// Loop do menu do jogo
 		do {
 			System.out.printf("\n");
 			System.out.println("Escolha uma opcao de Jogo abaixo");

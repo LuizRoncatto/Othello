@@ -8,6 +8,12 @@ public class Tabuleiro {
 	private Peca tabuleiro[][];
 	public int contador = 0;
 
+	/**
+	 * Construtor do Tabuleiro
+	 * @author luiz
+	 * @category Method
+	 */
+	
 	public Tabuleiro() {
 
 		tabuleiro = new Peca[Tam_Tabuleiro][Tam_Tabuleiro];
@@ -27,6 +33,14 @@ public class Tabuleiro {
 		tabuleiro[4][4] = new PecaX();
 
 	}
+	/**
+	 * Metodo imprimir
+	 * 
+	 * Esse metodo e utilizado para realizar a impressao do tabuleiro
+	 * @author luiz
+	 * @category Method
+	 */
+
 
 	public void imprimir() {
 
@@ -42,6 +56,14 @@ public class Tabuleiro {
 
 		}
 	}
+	/**
+	 * Metodo jogada
+	 * 
+	 * Esse metodo e utilizado para realizar a jogada
+	 * alterando entre peca X e peca O
+	 * @author luiz
+	 * @category Method
+	 */
 
 	public void jogada(int linha, int coluna, boolean jogador) {
 		if (jogador == true) {
@@ -52,7 +74,15 @@ public class Tabuleiro {
 
 		}
 	}
-
+	/**
+	 * Metodo verificaEspaco
+	 * 
+	 * Esse metodo e utilizado para fazer a validacao da jogada
+	 * verificando se na posicao jogada a um objeto do tipo peca
+	 * 
+	 * @author luiz
+	 * @category Method
+	 */
 	public boolean verificaEspaco(int linha, int coluna) {
 		try {
 			if (!tabuleiro[linha][coluna].getCaracter().equals(Peca.PecaVazia)) {
@@ -100,22 +130,22 @@ public class Tabuleiro {
 	 */
 	public void verificaGanhador() {
 		int ganhador = 0;
-		// criacao de dois lacos for para percorrer o tabuleiro e pegar a peca.
+// criacao de dois lacos for para percorrer o tabuleiro e pegar a peca.
 		for (int i = 0; i < Tam_Tabuleiro; i++) {
 
 			for (int j = 0; j < Tam_Tabuleiro; j++) {
-				// se a peca encontrada for igual a peca que eu tenho, somo na variavel ganhador
+// se a peca encontrada for igual a peca que eu tenho, somo na variavel ganhador
 				if (tabuleiro[i][j].getCaracter().equals(Peca.PecaX)) {
 					ganhador++;
-					// se for diferente eu decremento de ganhador.
+// se for diferente eu decremento de ganhador.
 				} else {
 					ganhador--;
 				}
 
 			}
 
-		} // ifs para verificar se a variavel esta positiva, negativa ou neutra (0) para
-			// saber quem e o ganhador
+		}
+// ifs para verificar se a variavel esta positiva, negativa ou neutra (0) para saber quem e o ganhador
 		if (ganhador > 0) {
 			System.out.println("Parab�ns, X ganhou!");
 		} else if (ganhador < 0) {
@@ -138,7 +168,7 @@ public class Tabuleiro {
 				mudei++;
 			}
 
-			// Transforma as peças da vertical verificando de cima para baixo
+// Transforma as peças da vertical verificando de cima para baixo
 			if (acheiPeca == true && mudei > 0) {
 				for (int line = linha + 1; !tabuleiro[line][coluna].equals(peca); line++) {
 					tabuleiro[line][coluna] = peca;
@@ -158,13 +188,13 @@ public class Tabuleiro {
 			}
 
 			if (acheiPeca == true && mudei > 0) {
-				for (int line = linha - 1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO); line--){
+				for (int line = linha - 1; !tabuleiro[line][coluna].getCaracter().equals(Peca.PecaO); line--) {
 					tabuleiro[line][coluna] = new PecaO();
 				}
 			}
 		}
 
-		// Transforma as peças da vertical verificando de baixo para cima
+// Transforma as peças da vertical verificando de baixo para cima
 		if (acheiPeca == true && mudei > 0) {
 			for (int line = linha - 1; !tabuleiro[line][coluna].equals(peca); line--) {
 				tabuleiro[line][coluna] = peca;
@@ -172,14 +202,27 @@ public class Tabuleiro {
 		}
 	}
 
+	/**
+	 * Realiza a verificaçao da matriz no sentido horizontal e faz a conversao das
+	 * peças segundo as regras do jogo
+	 * 
+	 * 
+	 * @author luiz
+	 * @param linha
+	 * @param coluna
+	 * @param jogador
+	 */
 	public void convertePecaHorizontal(int linha, int coluna, boolean jogador) {
 
 		Peca peca;
+// verificacao do jogador
 		if (jogador == true)
 			peca = new PecaO();
 		else {
 			peca = new PecaX();
 		}
+//Percorre a matriz verificando se a jogada feita tera uma alteracao na horizontal da direita para a esquerda
+
 		int mudei = 0;
 		boolean acheiPeca = false;
 		for (int j = coluna + 1; j < Tam_Tabuleiro; j++) {
@@ -189,7 +232,7 @@ public class Tabuleiro {
 				mudei++;
 			}
 
-			// Transforma as peças da horizontal verificando da direita para esquerda
+// Transforma as peças da horizontal verificando da direita para esquerda
 			if (acheiPeca == true && mudei > 0) {
 				for (j = coluna; j < Tam_Tabuleiro; j++) {
 					for (int colun = coluna + 1; !tabuleiro[linha][colun].equals(peca); colun++)
@@ -216,7 +259,20 @@ public class Tabuleiro {
 
 	}
 
+	/**
+	 * Realiza a verificaçao da matriz nas diagonais e faz a conversao das peças
+	 * segundo as regras do jogo
+	 * 
+	 * 
+	 * @author luiz
+	 * @param linha
+	 * @param coluna
+	 * @param jogador
+	 */
+
 	public void converteDiagonal(int linha, int coluna, boolean jogador) {
+// verificacao do jogador
+
 		Peca peca;
 
 		if (jogador == true) {
